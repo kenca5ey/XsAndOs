@@ -1,0 +1,20 @@
+.cell{
+	height: 100px;
+	width: 100px;
+	background-color: green;
+	float:left;
+	margin: 2px;
+
+}
+
+.player1{
+	background-color: red ;
+}
+
+.player2{
+	background-color: black ;
+}
+
+.board-wrap{
+	width:320px;
+}
