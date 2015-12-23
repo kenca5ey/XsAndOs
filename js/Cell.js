@@ -1,8 +1,9 @@
 var Cell = (function() {
 	'use strict';
 
-	var Cell = function(id) {
-		this.id = id;
+	var Cell = function(i,j) {
+		this.i = i;
+		this.j = j;
 		this.eventFunc = this.triggerCellClickedPubSub.bind(this);
 		this.initDom();
 	};

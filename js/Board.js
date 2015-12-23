@@ -10,6 +10,10 @@ var Board = (function() {
     this.setWrap(document.createElement('div'));
     this.getWrap().classList.add('board-wrap');
     this.genCells(num);
+
+    this.resultBox = document.createElement('div');
+    this.resultBox.classList.add('result-box');
+    this.getWrap().appendChild(this.resultBox);
   };
 
   Board.prototype.getWrap = function() {
@@ -21,19 +25,26 @@ var Board = (function() {
   };
 
   Board.prototype.genCells = function(num) {
-    var i = 0, frag, cell;
+    var frag, cell, curRow;
     frag = document.createDocumentFragment();
-
-    for (; i < num; i++) {
-      cell = new Cell(i);
-      this.pool.push(cell);
-      frag.appendChild(cell.dom);
+    for (var i = 0; i < num / 3; i++) {
+      curRow = [];
+      for (var j = 0; j < num / 3; j++) {
+        cell = new Cell(i,j);
+        curRow.push(cell);
+        frag.appendChild(cell.dom);
+      }
+      this.pool.push(curRow);
     }
     this.getWrap().appendChild(frag);
   };
 
   Board.prototype.updateCellIndicator = function(record) {
-    this.pool[record.id].dom.classList.add(record.player);
+    this.pool[record.i][record.j].dom.classList.add(record.player);
+  };
+
+  Board.prototype.endGame = function(text) {
+    this.resultBox.innerHTML = text;
   };
 
   return Board;

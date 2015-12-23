@@ -18,3 +18,10 @@
 .board-wrap{
 	width:320px;
 }
+
+.result-box{
+	width:320px;
+	height:100px;
+	font-size: 30px;
+	clear: both;
+}

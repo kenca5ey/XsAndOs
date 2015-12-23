@@ -1,15 +1,15 @@
 var CellRecord = (function() {
 	'use strict';
 
-	var CellRecord = function(id) {
-		this.id = id;
+	var CellRecord = function(i,j) {
+		this.i = i;
+		this.j = j;
 		this.init();
 	};
 
 	CellRecord.prototype.init = function() {
 		this.clickedYet = false;
 		this.player = null;
-		//PubSub.trigger('recordadded', [record]);
 	};
 
 

@@ -8,14 +8,16 @@
   var currentPlayer = "player1";
 
   var _onCellClicked = function(cell) {
-    logic.cellMap[cell.id].updateClickedStatus(currentPlayer);
+    console.log(logic.cellMap[cell.i][cell.j]);
+    logic.cellMap[cell.i][cell.j].updateClickedStatus(currentPlayer);
     cell.stopListeningForClick();
     changePlayer();
   };
 
   var _onCellStatusChange = function(cellRecord) {
     board.updateCellIndicator(cellRecord);
-    logic.incrementNumClicked();
+    logic.recordClick(cellRecord);
+    logic.checkForWinner(cellRecord);
   };
 
   
@@ -25,7 +27,7 @@
   };
 
   var _onGameFinished = function(text) {
-    console.log("Game over..... " + text);
+    board.endGame("Game Over.... Result: "+ text);
   };
 
   PubSub.on('cellclicked', _onCellClicked);
